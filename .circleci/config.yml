@@ -1,11 +1,21 @@
 version: 2
 jobs:
-  build:
+  test:
     docker:
       - image: cirrusci/flutter
     steps:
       - checkout
       - run: flutter doctor
       - run: flutter test 
-      - run: flutter -v build apk
+  build_android:
+    docker:
+        - image: cirrusci/flutter
+    steps:
+        - checkout
+        - run: flutter -v build apk
+  build_iOS:
+    macos:
+      xcode: "9.3.0"
+    steps:
+      - checkout
       - run: flutter -v build ios
