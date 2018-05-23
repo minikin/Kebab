@@ -36,6 +36,7 @@ Temporary Items
 !.vscode/extensions.json
 .history
 
+.build/*
 build/*
 .idea/*
 

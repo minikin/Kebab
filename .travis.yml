@@ -16,8 +16,6 @@ matrix:
         - git clone https://github.com/flutter/flutter.git
         - export PATH=`pwd`/flutter/bin:`pwd`/flutter/bin/cache/dart-sdk/bin:$PATH
       script:
-        - flutter doctor
-        - flutter analyze
         - flutter test
 
     # Job 2: Build Android
@@ -58,7 +56,6 @@ matrix:
         - git clone https://github.com/flutter/flutter.git
         - export PATH=`pwd`/flutter/bin:`pwd`/flutter/bin/cache/dart-sdk/bin:$PATH
       script:
-        - flutter doctor
         - flutter -v build apk
 
     # Job 3: Build iOS
@@ -75,7 +72,6 @@ matrix:
         - git clone https://github.com/flutter/flutter.git
         - export PATH=`pwd`/flutter/bin:`pwd`/flutter/bin/cache/dart-sdk/bin:$PATH
       script:
-        - flutter doctor
         - flutter -v build ios
 
 cache:
