@@ -1,6 +1,7 @@
 matrix:
   include:
-    # Job 1) Run Tests
+
+    # Job 1: Run Tests
     - os: linux
       sudo: false
       addons:
@@ -14,9 +15,12 @@ matrix:
       before_script:
         - git clone https://github.com/flutter/flutter.git
         - export PATH=`pwd`/flutter/bin:`pwd`/flutter/bin/cache/dart-sdk/bin:$PATH
+      script:
         - flutter doctor
+        - flutter analyze
         - flutter test
-    # Job 2) Build  APKs
+
+    # Job 2: Build Android
     - os: linux
       jdk: oraclejdk8
       sudo: false
@@ -53,10 +57,11 @@ matrix:
         - gradle -v
         - git clone https://github.com/flutter/flutter.git
         - export PATH=`pwd`/flutter/bin:`pwd`/flutter/bin/cache/dart-sdk/bin:$PATH
+      script:
         - flutter doctor
         - flutter -v build apk
 
-    # Job 3) Build example IPAs
+    # Job 3: Build iOS
     - os: osx
       language: generic
       osx_image: xcode9.2
@@ -69,6 +74,7 @@ matrix:
         - gem update cocoapods
         - git clone https://github.com/flutter/flutter.git
         - export PATH=`pwd`/flutter/bin:`pwd`/flutter/bin/cache/dart-sdk/bin:$PATH
+      script:
         - flutter doctor
         - flutter -v build ios
 
